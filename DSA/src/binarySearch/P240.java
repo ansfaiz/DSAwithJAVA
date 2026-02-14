@@ -18,8 +18,17 @@ public class P240 {
      *
      * Time Complexity: O(m + n)
      * Space Complexity: O(1)
+     *
+     * WHY CHOOSE TOP_RIGHT...
+     * We start from top-right because:
+     * If current > target → move left → eliminate that column
+     *If current < target → move down → eliminate that row
      */
     public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
+
         int row = 0;
         int column = matrix[0].length - 1;
         while (row < matrix.length && column >= 0) {
